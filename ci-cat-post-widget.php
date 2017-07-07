@@ -28,7 +28,7 @@ class CI_Category_Posts extends WP_Widget
         extract($args);
         $title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
         $post_type = $instance['post_type'];
-        $category_name = $instance['cat'];
+        $category_id = $instance['cat'];
         $random = $instance['random'];
         $count = $instance['count'];
         $item_layout = $instance['item_layout'];
@@ -64,7 +64,7 @@ class CI_Category_Posts extends WP_Widget
             'orderby' => 'date',
             'order' => 'DESC',
             'posts_per_page' => $count,
-            'category_name' => $category_name //Put the category slug here
+            'cat' => (int) $category_id //Put the category slug here
         );
 
         if (1 == $random) {
